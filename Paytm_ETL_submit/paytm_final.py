@@ -58,7 +58,7 @@ if __name__ == "__main__":
     #Q1 - Which country had the hottest average mean temperature over the year?
     TEMP_clean_df = weather_final.select("COUNTRY_FULL","TEMP").filter(F.col("TEMP")!=9999.9)
     Country_hot_mean_temp = TEMP_clean_df.groupBy(F.col("COUNTRY_FULL")).agg(F.avg(F.col("TEMP")).alias("avg_TEMP")).orderBy(F.col("avg_TEMP").desc()).collect()[0]
-    print("{} has hottest mean temperation of {} among all countries".format(Country_hot_mean_temp[0],Country_hot_mean_temp[1]))
+#    print("{} has hottest mean temperation of {} among all countries".format(Country_hot_mean_temp[0],Country_hot_mean_temp[1]))
     
     #Q2 - Which country had the most consecutive days of tornadoes/funnel cloud formations?
     consecutive_tor_days = weather_final.select("COUNTRY_FULL","FRSHTT","YEARMODA").filter(F.col("FRSHTT").substr(5,1)==1)
