@@ -68,7 +68,7 @@ if __name__ == "__main__":
     WDSP_clean_df = weather_final.select("COUNTRY_FULL","WDSP").filter(F.col("WDSP")!=999.9)
     w= Window.orderBy(F.col("avg_WDSP").desc())
     Second_highest_mean_speed_country = WDSP_clean_df.groupBy(F.col("COUNTRY_FULL"))        .agg(F.avg(F.col("WDSP")).alias("avg_WDSP"))        .orderBy(F.col("avg_WDSP").desc())        .collect()[1]
-#    print("{} has second highest mean speed of {} among all countries".format(Second_highest_mean_speed_country[0],Second_highest_mean_speed_country[1]))
+    print("{} has second highest mean speed of {} among all countries".format(Second_highest_mean_speed_country[0],Second_highest_mean_speed_country[1]))
 
 
     
